@@ -13,7 +13,7 @@ public class Main {
 		System.out.println("Password: ");
 		String p = sc.next();
 		
-		
+		Student s = new Student();
 	}
 
 }

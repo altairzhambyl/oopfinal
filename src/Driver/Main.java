@@ -1,13 +1,19 @@
 package Driver;
 
 import OfficeRegistrar.Course;
+import java.util.*;
 
 
 public class Main {
 
 	public static void main(String[] args) {
-		Course a = new Course("CSCI1", "PP1", "C++");
-		System.out.println(a.toString());
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Login: ");
+		String l = sc.next();
+		System.out.println("Password: ");
+		String p = sc.next();
+		
+		
 	}
 
 }

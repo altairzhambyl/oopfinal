@@ -10,5 +10,9 @@ public class CourseBase {
 
     public static ArrayList<Course> getCourses() {
         return courses;	
-    }   
+    }
+    
+    public void addCourse() {
+    	
+    }
 }

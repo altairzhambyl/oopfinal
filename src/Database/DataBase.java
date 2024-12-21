@@ -1,7 +1,6 @@
 package Database;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import OfficeRegistrar.Course;
@@ -41,7 +40,7 @@ public class DataBase implements Serializable {
                 }
             }
         }
-        INSTANCE = readData();
+        //INSTANCE = readData();
         return INSTANCE;
     }
     public synchronized void addUser(User user) {

@@ -7,7 +7,7 @@ import java.util.Vector;
 import Courses.Course;
 import Enums.Urgency;
 
-public class Teacher extends Employee implements Serializable
+public class Teacher extends Employee
 {
 	public Vector<Course> courses;
 	

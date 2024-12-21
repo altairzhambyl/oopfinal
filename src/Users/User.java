@@ -12,6 +12,7 @@ public static int userCount = 0;
 	private String userLastName;
 	private String email;
 	private String passwordHash;
+	private boolean isBlocked = false;
 	
 	private boolean isLoggedIn;
 	
@@ -106,6 +107,20 @@ public static int userCount = 0;
 	public static boolean equals(User a, User b) {
 		return a.userId == b.userId;
 	}
+	
+	protected void blockUser() {
+		this.isBlocked = true;
+	}
+	protected static void blockUser(User user) {
+		user.isBlocked = true;
+	}
+	protected void unblockUser() {
+		this.isBlocked = false;
+	}
+	protected static void unblockUser(User user) {
+		user.isBlocked = false;
+	}
+	
 	
 	public User(String userFirstName,String userLastName, String email) {
 		this();

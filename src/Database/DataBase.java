@@ -5,26 +5,13 @@ import java.util.ArrayList;
 
 import OfficeRegistrar.Course;
 
-public class DataBase implements Serializable {
+public class DataBase<T> implements Serializable {
     private static final long serialVersionUID = 1L;
     public static DataBase INSTANCE;
-    private ArrayList<Course> courses = new ArrayList<>();
+    private ArrayList<T> arrayList = new ArrayList<>();
+ 
     
-    static {
-        try {
-            if (new File("data").exists()) {
-                INSTANCE = readData();
-            } else {
-                INSTANCE = new DataBase();
-            }
-        } catch (Exception e) {
-            System.err.println("Error initializing database: " + e.getMessage());
-            e.printStackTrace();
-            INSTANCE = new DataBase(); // Ensure INSTANCE is always initialized
-        }
-    }
-    
-    private DataBase() {
+    protected DataBase() {
         // Private constructor to enforce singleton pattern
     }
     
@@ -39,12 +26,12 @@ public class DataBase implements Serializable {
         return INSTANCE;
     }
 
-    public synchronized void addCourse(Course course) {
-        courses.add(course);
+    public synchronized void addToList(T data) {
+        arrayList.add((T) data);
     }
 
-    public synchronized ArrayList<Course> getCourses() {
-        return new ArrayList<>(courses); // Return a copy to avoid external modification
+    public synchronized ArrayList<T> getList() {
+        return new ArrayList<T>(arrayList); // Return a copy to avoid external modification
     }
 
     public static synchronized void writeData() throws IOException {

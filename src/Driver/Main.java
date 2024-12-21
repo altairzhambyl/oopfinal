@@ -1,11 +1,11 @@
 package Driver;
 
-import OfficeRegistrar.Course;
+import OfficeRegistrar.*;
+import Users.*;
 import java.util.*;
 
 
 public class Main {
-	//lololol
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Login: ");
@@ -15,5 +15,4 @@ public class Main {
 		
 		Student s = new Student();
 	}
-
 }

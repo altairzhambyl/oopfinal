@@ -54,6 +54,7 @@ public class DataBase implements Serializable {
 
     public synchronized ArrayList<User> getUsers() {
         return new ArrayList<>(users); // Return a copy to avoid external modification
+        
     }
     public static synchronized void writeData() throws IOException {
     	try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data"))) {

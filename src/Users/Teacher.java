@@ -52,5 +52,8 @@ public class Teacher extends Employee
 	public Teacher() {
 		super();
 	}
+	public Teacher(String first, String last, String email) {
+		super(first, last, email);
+	}
 	
 }

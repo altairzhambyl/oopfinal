@@ -7,13 +7,9 @@ public abstract class User {
 public static int userCount = 0;
 	
 	private final String userId;
-	
 	private String userFirstName;
-	
 	private String userLastName;
-	
 	private String email;
-	
 	private String passwordHash;
 	
 	private boolean isLoggedIn;
@@ -121,5 +117,9 @@ public static int userCount = 0;
 		User.userCount++;
 		this.userId = "2024ID"+User.userCount;	
 		//implements DataBase and serialization;
+	}
+	
+	public String toString() {
+		return this.userFirstName + ' ' + this.userLastName + ' ' + this.email;
 	}
 }

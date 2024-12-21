@@ -1,12 +1,13 @@
 package Users ;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.Vector;
 
 import Courses.Course;
 import Enums.Urgency;
 
-public class Teacher extends Employee
+public class Teacher extends Employee implements Serializable
 {
 	public Vector<Course> courses;
 	

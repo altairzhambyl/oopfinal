@@ -2,15 +2,17 @@ package Database;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import OfficeRegistrar.Course;
 import Users.*;
 
 public class DataBase implements Serializable {
+
     private static final long serialVersionUID = 1L;
     public static DataBase INSTANCE;
-    private static ArrayList<Course> courses = new ArrayList<>();
-    private static ArrayList<User> users = new ArrayList<>();
+    private Vector<Course> courses = new Vector<Course>();
+    private Vector<User> users = new Vector<User>();
     
     static {
         try {
@@ -30,55 +32,49 @@ public class DataBase implements Serializable {
         // Private constructor to enforce singleton pattern
     }
     
-    public static DataBase getInstance() {
+    public static DataBase getInstance() throws ClassNotFoundException, IOException {
         if (INSTANCE == null) {
             synchronized (DataBase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = new DataBase();
+                } else {
                 }
             }
         }
+        INSTANCE = readData();
         return INSTANCE;
-    }
-
-    public synchronized void addCourse(Course course) {
-        courses.add(course);
-    }
-
-    public synchronized ArrayList<Course> getCourses() {
-        return new ArrayList<>(courses); // Return a copy to avoid external modification
     }
     public synchronized void addUser(User user) {
         users.add(user);
     }
 
-    public synchronized ArrayList<User> getUsers() {
-        return new ArrayList<>(users); // Return a copy to avoid external modification
+    public synchronized Vector<User> getUsers() {
+        return (Vector<User>) users.clone(); // Return a copy to avoid external modification
         
     }
+    public synchronized void addCourse(Course course) {
+        courses.add(course);
+    }
+    public synchronized Vector<Course> getCourses() {
+        return (Vector<Course>) courses.clone(); // Return a copy to avoid external modification
+    }
     public static synchronized void writeData() throws IOException {
-    	try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data"))) {
             oos.writeObject(INSTANCE);
-            System.out.println("Data saved to file.");
-        } catch (IOException e) {
-            System.err.println("Error writing data to file: " + e.getMessage());
-            throw e;
         }
     }
-
     private static DataBase readData() throws IOException, ClassNotFoundException {
-    	System.out.println("Attempting to read data from file...");
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data"))) {
-            DataBase db = (DataBase) ois.readObject();
-            System.out.println("Data successfully loaded from file.");
-            return db;
-        } catch (FileNotFoundException e) {
-            System.out.println("No existing data file found.");
-            return new DataBase();
+            return (DataBase) ois.readObject();
         }
     }
-
     private Object readResolve() throws ObjectStreamException {
         return INSTANCE; // Ensure singleton on deserialization
     }
+    
+   
+
+    
+    
+    
 }

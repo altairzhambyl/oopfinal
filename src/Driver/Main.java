@@ -1,19 +1,20 @@
 package Driver;
 
 import OfficeRegistrar.Course;
+import Pages.Navigation;
+import Users.*;
+import Courses.*;
+import Database.DataBase;
+import Enums.*;
+
+import java.io.IOException;
 import java.util.*;
 
 
 public class Main {
 	//lololol
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Login: ");
-		String l = sc.next();
-		System.out.println("Password: ");
-		String p = sc.next();
 		
-		Student s = new Student();
+		Navigation nav = new Navigation();
 	}
-
 }

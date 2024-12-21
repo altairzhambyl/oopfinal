@@ -1,5 +1,11 @@
 package OfficeRegistrar;
 
+import java.util.ArrayList;
+
+import Enums.CourseType;
+import Enums.School;
+import Users.Teacher;
+
 public class Course {
 	private final String code;
 	private String nameKZ;

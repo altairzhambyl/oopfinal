@@ -1,9 +1,10 @@
 package Users;
 
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public abstract class User {
+public abstract class User implements Serializable{
 public static int userCount = 0;
 	
 	private final String userId;

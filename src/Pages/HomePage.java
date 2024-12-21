@@ -31,14 +31,17 @@ public class HomePage extends Page{
 	        switch (Page.language) {
 	      default:
 	        System.out.println("-1. Сменить язык");
+	        System.out.println("0. Auth");
 	        System.out.println("1. О нас");
 	        return;
 	      case KZ:
 	        System.out.println("-1. Басқа тілді таңдау");
+	        System.out.println("0. Auth");
 	        System.out.println("1. Біз туралы бет");
 	        break;
 	      case EN:
 	        System.out.println("-1. Change language");
+	        System.out.println("0. Auth");
 	        System.out.println("1. About page");
 	        break;
 	        }
@@ -48,6 +51,8 @@ public class HomePage extends Page{
 	@Override
 	public Page inputToPage(int i) {
 		switch(i) {
+		case 0:
+			return new AuthPage();
 		case 1:
 			return new AboutPage();
 		case -1:

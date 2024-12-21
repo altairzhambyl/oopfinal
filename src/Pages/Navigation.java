@@ -7,6 +7,7 @@ public final class Navigation {
     private Page currentPage;
     private Page homePage = new HomePage();
     private Page aboutPage = new AboutPage();
+    private Page authPage = new AuthPage();
     
     public Navigation() {
     	this.currentPage = this.homePage;
@@ -17,13 +18,18 @@ public final class Navigation {
     	int i = 0;
     	while (i != -2) {
     		currentPage.display();
-    		i = sc.nextInt();
+    		if(currentPage instanceof AuthPage) {
+    			
+    		} else {
+    			i = sc.nextInt();
       
-	    	if (i == -1) {
-	    		this.changeLanugage();
-	    		return ;
+    			if (i == -1) {
+    				this.changeLanugage();
+    				return ;
 	    	}
-	    	currentPage = currentPage.inputToPage(i);
+    			currentPage = currentPage.inputToPage(i);
+    	
+    		}
     	}
     	sc.close();
     }

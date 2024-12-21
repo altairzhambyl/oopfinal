@@ -1,6 +1,13 @@
 package OfficeRegistrar;
 
-public class Course {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import Enums.CourseType;
+import Enums.School;
+import Users.Teacher;
+
+public class Course implements Serializable{
 	private final String code;
 	private String nameKZ;
 	private String nameRU;

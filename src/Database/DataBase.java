@@ -1,7 +1,6 @@
 package Database;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import OfficeRegistrar.Course;
@@ -13,6 +12,7 @@ public class DataBase implements Serializable {
     public static DataBase INSTANCE = null;
     private Vector<Course> courses = new Vector<Course>();
     private Vector<User> users = new Vector<User>();
+    private Vector<LogInfo> logs = new Vector<LogInfo>();
     
     static {
         try {
@@ -38,12 +38,9 @@ public class DataBase implements Serializable {
         if (INSTANCE == null) {
         	INSTANCE = new DataBase();
         }
-<<<<<<< HEAD
         INSTANCE = readData();
-=======
         System.out.println(new File("data").getAbsolutePath());
 
->>>>>>> 72688a717f77500995ce0d31d80296cdee44f99a
         return INSTANCE;
     }
     public synchronized void addUser(User user) {
@@ -52,6 +49,14 @@ public class DataBase implements Serializable {
             writeData();
         } catch (IOException e) {
             System.err.println("Failed to write data after adding user: " + e.getMessage());
+        }
+    }
+    public synchronized void removeUser(User user) {
+    	users.remove(user);
+        try {
+            writeData();
+        } catch (IOException e) {
+            System.err.println("Failed to write data after removing user: " + e.getMessage());
         }
     }
 
@@ -67,8 +72,37 @@ public class DataBase implements Serializable {
             System.err.println("Failed to write data after adding course: " + e.getMessage());
         }
     }
+    public synchronized void removeCourse(Course course) {
+    	courses.remove(course);
+
+        try {
+            writeData();
+        } catch (IOException e) {
+            System.err.println("Failed to write data after removing course: " + e.getMessage());
+        }
+    }
     public synchronized Vector<Course> getCourses() {
         return (Vector<Course>) courses.clone(); // Return a copy to avoid external modification
+    }
+    public synchronized void addLog(LogInfo log) {
+        logs.add(log);
+        try {
+            writeData();
+        } catch (IOException e) {
+            System.err.println("Failed to write data after adding log info: " + e.getMessage());
+        }
+    }
+    public synchronized void removeLog(LogInfo log) {
+    	logs.remove(log);
+
+        try {
+            writeData();
+        } catch (IOException e) {
+            System.err.println("Failed to write data after removing log info: " + e.getMessage());
+        }
+    }
+    public synchronized Vector<Course> getLogs() {
+        return (Vector<Course>) logs.clone(); // Return a copy to avoid external modification
     }
     public static synchronized void writeData() throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data"))) {

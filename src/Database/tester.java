@@ -13,14 +13,14 @@ public class tester {
 		    ArrayList<Teacher> teaches = new ArrayList<Teacher>();
 			teaches.add(new Teacher());
 			Course course = new Course(
-				    "code", "ООП", "да"
+				    "notcode", "АДС", "НЕТ ОПИСАНИЯ"
 				);
 			
-			
+			DataBase.getInstance();
 
 			DataBase.INSTANCE.addCourse(course); // Use INSTANCE safely after the fix
-	        DataBase.writeData(); // Save to file
-	        System.out.println("Data written to file successfully.");
+	        //DataBase.writeData(); // Save to file
+	        //System.out.println("Data written to file successfully.");
 
 	        // Read and display courses
 	        System.out.println("Courses in the database:");

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Vector;
 
 
-public abstract class Employee extends User
+public abstract class Employee extends User implements Serializable
 {
 	
 	

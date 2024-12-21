@@ -17,6 +17,7 @@ public class tester {
 			
 			
 			DataBase.getInstance();
+			
 			DataBase.INSTANCE.addUser(t);
 			DataBase.INSTANCE.addCourse(course); // Use INSTANCE safely after the fix
 	        DataBase.writeData(); // Save to file

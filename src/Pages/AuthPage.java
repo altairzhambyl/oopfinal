@@ -6,6 +6,7 @@ import Users.*;
 import Enums.Language;
 
 public class AuthPage extends Page {
+	private boolean isLogged = false;
 	TestUserBase UserBase;
 	public AuthPage(){
 		this.UserBase = TestUserBase.getInstance();
@@ -62,7 +63,8 @@ public class AuthPage extends Page {
             }
             if(UserBase.checkLogin(log)) {
             	System.out.println("Good");
-            	inputToPage(2);
+            	isLogged = true;
+            	return;
             } else {
             	System.out.println("Bad, try again");
             	inputToPage(1);

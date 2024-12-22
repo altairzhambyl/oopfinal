@@ -1,7 +1,8 @@
 package Users;
 
 
-import Database.DataBase;
+import Database.DB;
+import Database.DB;
 import Database.LogInfo;
 
 public class Admin extends User {
@@ -17,8 +18,11 @@ public class Admin extends User {
 	
 	public void addUser(User user) {
 		try {
-			DataBase.getInstance().addUser(user);
-			DataBase.getInstance().addLog(new LogInfo(this, String.format("Added new user %s to database", user.toString())));
+			DB.loadFromFile();
+			DB loadeddb = DB.getInstance();
+			loadeddb.addUser(user);
+			LogInfo log = new LogInfo(this, "Added new user to database");
+			//loadeddb.addLog(log);
 		} catch (Exception e) {
 			System.out.println("Failed to add user");
 		}
@@ -28,8 +32,10 @@ public class Admin extends User {
 	
 	public void deleteUser(User user) {
 		try {
-			DataBase.getInstance().removeUser(user);
-			DataBase.getInstance().addLog(new LogInfo(this, String.format("removed user %s from database", user.toString())));
+			DB.loadFromFile();
+			DB loadeddb = DB.getInstance();
+			loadeddb.removeUser(user);
+			loadeddb.addLog(new LogInfo(this, "removed user from database"));
 		} catch (Exception e) {
 			System.out.println("Failed to remove user");
 		}
@@ -37,9 +43,11 @@ public class Admin extends User {
 	
 	public void viewLogInfo() {
 		try {
-		DataBase db = DataBase.getInstance();
+		DB db = DB.getInstance();
+		db.loadFromFile();
+		DB loadeddb = DB.getInstance();
 		System.out.println("All log files:\n");
-		db.getLogs().forEach(System.out::println);
+		loadeddb.getLogs().forEach(System.out::println);
 		} catch (Exception e) {
 			System.out.println("Failed to view log info");
 		}

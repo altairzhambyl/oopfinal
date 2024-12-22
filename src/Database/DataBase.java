@@ -10,13 +10,14 @@ import Users.*;
 public class DataBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static DataBase INSTANCE;
+    public static DataBase INSTANCE = null;
     private Vector<Course> courses = new Vector<Course>();
     private Vector<User> users = new Vector<User>();
     
     static {
         try {
-            if (new File("data").exists()) {
+            File dataFile = new File("data");
+            if (dataFile.exists()) {
                 INSTANCE = readData();
             } else {
                 INSTANCE = new DataBase();
@@ -24,9 +25,10 @@ public class DataBase implements Serializable {
         } catch (Exception e) {
             System.err.println("Error initializing database: " + e.getMessage());
             e.printStackTrace();
-            INSTANCE = new DataBase(); // Ensure INSTANCE is always initialized
+            INSTANCE = new DataBase();
         }
     }
+
     
     private DataBase() {
         // Private constructor to enforce singleton pattern
@@ -34,18 +36,23 @@ public class DataBase implements Serializable {
     
     public static DataBase getInstance() throws ClassNotFoundException, IOException {
         if (INSTANCE == null) {
-            synchronized (DataBase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new DataBase();
-                } else {
-                }
-            }
+        	INSTANCE = new DataBase();
         }
+<<<<<<< HEAD
         INSTANCE = readData();
+=======
+        System.out.println(new File("data").getAbsolutePath());
+
+>>>>>>> 72688a717f77500995ce0d31d80296cdee44f99a
         return INSTANCE;
     }
     public synchronized void addUser(User user) {
         users.add(user);
+        try {
+            writeData();
+        } catch (IOException e) {
+            System.err.println("Failed to write data after adding user: " + e.getMessage());
+        }
     }
 
     public synchronized Vector<User> getUsers() {
@@ -54,6 +61,11 @@ public class DataBase implements Serializable {
     }
     public synchronized void addCourse(Course course) {
         courses.add(course);
+        try {
+            writeData();
+        } catch (IOException e) {
+            System.err.println("Failed to write data after adding course: " + e.getMessage());
+        }
     }
     public synchronized Vector<Course> getCourses() {
         return (Vector<Course>) courses.clone(); // Return a copy to avoid external modification
@@ -63,7 +75,7 @@ public class DataBase implements Serializable {
             oos.writeObject(INSTANCE);
         }
     }
-    private static DataBase readData() throws IOException, ClassNotFoundException {
+    public static DataBase readData() throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data"))) {
             return (DataBase) ois.readObject();
         }

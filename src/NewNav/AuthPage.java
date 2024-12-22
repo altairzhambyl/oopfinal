@@ -1,26 +1,35 @@
 package NewNav;
 
+import java.util.Vector;
 import java.util.HashMap;
-import java.util.Map;
-
+import Database.*;
 import Users.*;
+import OfficeRegistrar.Course;
+import java.io.*;
 
 public class AuthPage extends Page {
-    private Map<String, User> users;
+	
+	private DB db;
+	
     private UserSession session;
 
     public AuthPage() {
-        users = new HashMap<>();
         session = UserSession.getInstance();
-        // Add a default user for testing
-        users.put("admin", new Admin("admin", "admin", "admin@kbtu.kz"));
+        if (new File("data").isFile()) {
+            try {
+                DB.loadFromFile();
+            } catch (Exception e) {
+                System.out.println("Failed to load database from file.");
+            }
+        }
+        db = DB.getInstance();
     }
 
     @Override
     public void display() {
         System.out.println("\n=== Authentication Page ===");
         System.out.println("1. Login");
-        //System.out.println("2. Register");
+        System.out.println("2. Say Hi");
         System.out.println("3. Exit");
     }
 
@@ -33,9 +42,9 @@ public class AuthPage extends Page {
             case 1:
                 login();
                 break;
-//            case 2:
-//                register();
-//                break;
+            case 2:
+                sayhi();
+                break;
             case 3:
                 System.out.println("Goodbye!");
                 scanner.close();
@@ -52,11 +61,10 @@ public class AuthPage extends Page {
         String username = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-
-        User user = users.get(username);
-        if (user != null) {
+        User user = db.getUserByUsername(username);
+        
+        if (user != null && user.logIn(password)) {
             session.setCurrentUser(user);
-            user.logIn(password);
             new HomePage().start();
         } else {
             System.out.println("Invalid username or password!");
@@ -64,34 +72,12 @@ public class AuthPage extends Page {
         }
     }
 
-//    private void register() {
-//        System.out.print("Enter new username: ");
-//        String username = scanner.nextLine();
-//
-//        if (users.containsKey(username)) {
-//            System.out.println("Username already exists!");
-//            navigate();
-//            return;
-//        }
-//
-//        System.out.print("Enter password: ");
-//        String password = scanner.nextLine();
-//        System.out.print("Confirm password: ");
-//        String confirmPassword = scanner.nextLine();
-//
-//        if (!password.equals(confirmPassword)) {
-//            System.out.println("Passwords don't match!");
-//            navigate();
-//            return;
-//        }
-//
-//        users.put(username, new User(username, password));
-//        System.out.println("Registration successful! Please login.");
-//        navigate();
-//    }
+    private void sayhi() {
+        System.out.println("HI");
+    }
 
     public void start() {
-        while(!session.isLoggedIn()) {
+        while (!session.isLoggedIn()) {
             display();
             navigate();
         }

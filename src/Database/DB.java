@@ -53,6 +53,14 @@ public class DB implements Serializable {
     public Vector<User> getUsers() {
         return users;
     }
+    public User getUserByUsername(String name) {
+        for(User u : users) {
+        	if(u.getUsername().equals(name)) {
+        		return u;
+        	}
+        }
+        return null;
+    }
 
     // Setter for users
     public void setUsers(Vector<User> users) {

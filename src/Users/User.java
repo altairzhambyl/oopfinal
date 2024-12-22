@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public abstract class User implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 public static int userCount = 0;
 	
 	private final String userId;
@@ -35,24 +37,15 @@ public static int userCount = 0;
         }
     }
 	
-	public void logOut() {
-		if (isLoggedIn) {
-            this.isLoggedIn = false;
-            System.out.println("Successfully logged out.");
-        } else {
-            System.out.println("You are not logged in.");
-        }
-	}
-	
 	 
 	
 	public boolean logIn(String password) {
 		if (hashPassword(password).equals(this.passwordHash)) {
 			this.isLoggedIn = false;
-			System.out.println("Login successful!");
+//			System.out.println("Login successful!");
 			return true;
 		} else {
-			System.out.println("Man you must've forgor your password *skull emoji*");
+//			System.out.println("Man you must've forgor your password *skull emoji*");
 			return false;
 		}
 	}
@@ -85,6 +78,10 @@ public static int userCount = 0;
 	
 	public String getLastName() {
 		return this.userLastName;	
+	}
+	
+	public String getUsername() {
+		return this.email;
 	}
 	 
 	

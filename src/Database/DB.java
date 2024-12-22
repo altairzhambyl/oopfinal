@@ -4,7 +4,7 @@ package Database;
 import java.io.*;
 import java.util.Vector;
 
-import OfficeRegistrar.Course;
+import Courses.Course;
 import Users.User;
 
 // Define the Database class implementing Serializable
@@ -52,6 +52,14 @@ public class DB implements Serializable {
     // Getter for users
     public Vector<User> getUsers() {
         return users;
+    }
+    public User getUserByUsername(String name) {
+        for(User u : users) {
+        	if(u.getEmail().equals(name)) {
+        		return u;
+        	}
+        }
+        return null;
     }
 
     // Setter for users

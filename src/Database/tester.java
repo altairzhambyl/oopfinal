@@ -1,6 +1,7 @@
 package Database;
 
 
+import java.io.File;
 import java.io.IOException;
 
 import Users.*;
@@ -9,25 +10,25 @@ import Users.*;
 public class tester {
 
     public static void main(String[] args) {
+    	try {
             Teacher t = new Teacher("Second", "Last", "567@kbtu.kz");
             Admin a = new Admin("Admin", "admin", "admin@kbtu.kz");
             
-            DataBase db = null;
-			try {
-				db = DataBase.getInstance();
-			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            db.addUser(t);
-            a.addUser(a);
-            a.viewLogInfo();
             
+            if (new File("data").isFile()) {
+            	DB.loadFromFile();
+            }
+            DB loadeddb = DB.getInstance();
+
+			LogInfo log = new LogInfo(t, "Added new user to database");
+//			System.out.println(log);
+//			loadeddb.addLog(log);
+//            loadeddb.addUser(a);
+//            a.addUser(t);
             
-            // Display courses and users
-            System.out.println("Courses in the database:");
-            db.getCourses().forEach(System.out::println);
-            System.out.println("Users in the database:");
-            db.getUsers().forEach(System.out::println);
+            System.out.println(loadeddb);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
 }

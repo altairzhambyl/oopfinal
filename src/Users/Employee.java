@@ -33,5 +33,9 @@ public abstract class Employee extends User implements Serializable
 		this.studentList = studentList;
 	}
 	
+	
+	public String toString() {
+		return super.toString();
+	}
 }
 

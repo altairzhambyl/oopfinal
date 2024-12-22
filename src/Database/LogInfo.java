@@ -1,8 +1,14 @@
 package Database;
 
+import java.io.Serializable;
+
 import Users.User;
 
-public class LogInfo {
+public class LogInfo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	private String log;
 	
@@ -19,6 +25,10 @@ public class LogInfo {
 	}
 	
 	public String getLogInfo() {
-		return this.user.toString()+' '+this.log;
+		return this.toString();
+	}
+	
+	public String toString() {
+		return this.user.getEmail()+" "+this.log;
 	}
 }

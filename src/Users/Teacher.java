@@ -57,4 +57,8 @@ public class Teacher extends Employee implements Serializable
 		super(first, last, email);
 	}
 	
+	
+	public String toString() {
+		return super.toString();
+	}
 }

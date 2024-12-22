@@ -5,7 +5,7 @@ import OfficeRegistrar.Course;
 import Pages.Navigation;
 import Users.*;
 import Courses.*;
-import Database.DataBase;
+import Database.DB;
 import Enums.*;
 
 import java.io.IOException;

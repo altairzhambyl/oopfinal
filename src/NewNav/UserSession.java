@@ -1,5 +1,7 @@
 package NewNav;
 
+import Users.*;
+
 public class UserSession {
     private static User currentUser;
     private static UserSession instance;

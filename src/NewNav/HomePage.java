@@ -10,7 +10,7 @@ public class HomePage extends Page {
     @Override
     public void display() {
         System.out.println("\n=== Home Page ===");
-        System.out.println("Welcome, " + session.getCurrentUser().getUsername() + "!");
+        System.out.println("Welcome, " + session.getCurrentUser().getEmail() + "!");
         System.out.println("1. Go to Profile");
         System.out.println("2. Go to Settings");
         System.out.println("3. Logout");
@@ -28,11 +28,11 @@ public class HomePage extends Page {
             case 2:
                 new SettingsPage().start();
                 break;
-            case 3:
+            case -2:
                 session.logout();
                 new AuthPage().start();
                 break;
-            case 4:
+            case -3:
                 System.out.println("Goodbye!");
                 scanner.close();
                 System.exit(0);

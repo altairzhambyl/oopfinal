@@ -1,16 +1,24 @@
 package Users;
 
-import java.io.IOException;
-import java.util.Vector;
 
 import Database.DataBase;
+import Database.LogInfo;
 
 public class Admin extends User {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Admin(String first, String last, String email) {
+		super(first, last, email);
+	}
 	
 	public void addUser(User user) {
 		try {
 			DataBase.getInstance().addUser(user);
+			DataBase.getInstance().addLog(new LogInfo(this, String.format("Added new user %s to database", user.toString())));
 		} catch (Exception e) {
 			System.out.println("Failed to add user");
 		}
@@ -21,6 +29,7 @@ public class Admin extends User {
 	public void deleteUser(User user) {
 		try {
 			DataBase.getInstance().removeUser(user);
+			DataBase.getInstance().addLog(new LogInfo(this, String.format("removed user %s from database", user.toString())));
 		} catch (Exception e) {
 			System.out.println("Failed to remove user");
 		}

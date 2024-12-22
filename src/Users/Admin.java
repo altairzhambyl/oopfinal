@@ -43,8 +43,7 @@ public class Admin extends User {
 	
 	public void viewLogInfo() {
 		try {
-		DB db = DB.getInstance();
-		db.loadFromFile();
+		DB.loadFromFile();
 		DB loadeddb = DB.getInstance();
 		System.out.println("All log files:\n");
 		loadeddb.getLogs().forEach(System.out::println);

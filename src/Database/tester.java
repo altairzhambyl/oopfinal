@@ -20,7 +20,7 @@ public class tester {
             }
             DB loadeddb = DB.getInstance();
 
-			LogInfo log = new LogInfo(t, "Added new user to database");
+//			LogInfo log = new LogInfo(t, "Added new user to database");
 //			System.out.println(log);
 //			loadeddb.addLog(log);
 //            loadeddb.addUser(a);

@@ -1,11 +1,15 @@
 package NewNav;
 
 import java.util.Scanner;
+
+import Enums.Language;
+
 import java.util.InputMismatchException;
 
 public abstract class Page {
     protected static Scanner scanner = new Scanner(System.in);
-    
+
+    public static Language language = Language.RU;
     public abstract void display();
     public abstract void navigate();
     

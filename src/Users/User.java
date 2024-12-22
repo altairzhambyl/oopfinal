@@ -111,14 +111,8 @@ public static int userCount = 0;
 	protected void blockUser() {
 		this.isBlocked = true;
 	}
-	protected static void blockUser(User user) {
-		user.isBlocked = true;
-	}
 	protected void unblockUser() {
 		this.isBlocked = false;
-	}
-	protected static void unblockUser(User user) {
-		user.isBlocked = false;
 	}
 	
 	

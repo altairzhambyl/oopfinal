@@ -39,7 +39,6 @@ public class DataBase implements Serializable {
         	INSTANCE = new DataBase();
         }
         INSTANCE = readData();
-        System.out.println(new File("data").getAbsolutePath());
 
         return INSTANCE;
     }

@@ -1,8 +1,11 @@
 package Users;
 
+import java.io.File;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import Database.DB;
 
 public abstract class User implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -36,7 +39,7 @@ public static int userCount = 0;
             throw new RuntimeException("Hashing algorithm not found", e);
         }
     }
-	
+
 	 
 	
 	public boolean logIn(String password) {
@@ -52,10 +55,28 @@ public static int userCount = 0;
 	
 	public void changePassword(String oldPassword, String newPassword) {
 		if (hashPassword(oldPassword).equals(this.passwordHash)) {
-			this.passwordHash = hashPassword(newPassword);
+			changePassword(newPassword);
+			if(new File("data").isFile()) {
+	        	try {
+	        	DB.loadFromFile(); }
+	        	catch (Exception e) {
+	        		//cry TODO handle exception
+		        	System.err.println("Didnt load database");
+	        	}
+	        }
+	        DB db = DB.getInstance();
+	        try {
+	        	db.saveToFile();
+	        } catch (Exception e) {
+        		//cry TODO handle exception
+	        	System.err.println("Didnt save new password");
+	        }
 		} else {
 			System.out.println("Man you must've forgor your password *skull emoji*");
 		}
+	}
+	public void changePassword(String newPassword) {
+		this.passwordHash = hashPassword(newPassword);
 	}
 	 
 	

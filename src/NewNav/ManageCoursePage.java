@@ -2,29 +2,29 @@ package NewNav;
 
 import Enums.Language;
 
-public class HomePage extends Page {
+public class ManageCoursePage extends Page {
     private UserSession session;
 
-    public HomePage() {
+    public ManageCoursePage() {
         this.session = UserSession.getInstance();
     }
 
     @Override
     public void display() {
         if (Page.language == Language.EN) {
-            System.out.println("\n=== Home Page ===");
-            System.out.println("Welcome, " + session.getCurrentUser().getFirstName() + "!");
-            System.out.println("1. Go to Profile");
-            System.out.println("2. Go to Settings");
-            System.out.println("-2. Logout");
-            System.out.println("-3. Exit");
+            System.out.println("\n=== Manage Courses===");
+            System.out.println("Let's manage courses for, " + session.getCurrentUser().getFirstName() + "!");
+            System.out.println("1. Add course");
+            System.out.println("2. Remove course");
+            System.out.println("3. Change course details");
+            System.out.println("4. Go back");
         } else if (Page.language == Language.RU) {
-            System.out.println("\n=== Главная страница ===");
-            System.out.println("Добро пожаловать, " + session.getCurrentUser().getFirstName() + "!");
-            System.out.println("1. Профиль");
-            System.out.println("2. Настройки");
-            System.out.println("-2. Выйти из аккаунта");
-            System.out.println("-3. Выход");
+            System.out.println("\n=== Управление дисциплинами ===");
+            System.out.println("Начните редактировать дисциплины, " + session.getCurrentUser().getFirstName() + "!");
+            System.out.println("1. Добавить новую дисциплину");
+            System.out.println("2. Удалить дисциплину");
+            System.out.println("3. Изменить данные о дисциплине");
+            System.out.println("4. Вернуться");
         } else if (Page.language == Language.KZ) {
             System.out.println("\n=== Басты бет ===");
             System.out.println("Қош келдіңіз, " + session.getCurrentUser().getFirstName() + "!");

@@ -4,7 +4,7 @@ package Database;
 import java.io.*;
 import java.util.Vector;
 
-import OfficeRegistrar.Course;
+import Courses.Course;
 import Users.User;
 
 // Define the Database class implementing Serializable
@@ -55,7 +55,7 @@ public class DB implements Serializable {
     }
     public User getUserByUsername(String name) {
         for(User u : users) {
-        	if(u.getUsername().equals(name)) {
+        	if(u.getEmail().equals(name)) {
         		return u;
         	}
         }

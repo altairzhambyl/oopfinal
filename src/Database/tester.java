@@ -25,6 +25,7 @@ public class tester {
 //			loadeddb.addLog(log);
 //            loadeddb.addUser(a);
 //            a.addUser(t);
+//            loadeddb.removeUser(t);
             
             System.out.println(loadeddb);
     	} catch (Exception e) {

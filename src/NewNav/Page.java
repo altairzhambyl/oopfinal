@@ -23,4 +23,8 @@ public abstract class Page {
             return -1;
         }
     }
+    protected String getUserInput() {
+        
+            return scanner.nextLine();
+    }
 }

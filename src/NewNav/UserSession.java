@@ -30,4 +30,18 @@ public class UserSession {
     public void logout() {
         currentUser = null;
     }
+    
+    public String userType() {
+    	if(currentUser instanceof Teacher) {
+    		return "Teacher";
+    	} else if (currentUser instanceof Student) {
+    		return "Student";
+    	} else if (currentUser instanceof Admin) {
+    		return "Admin";
+    	} else if (currentUser instanceof Manager) {
+    		return "Manager";
+    	} else {
+    		return "Guest";
+    	}
+    }
 }

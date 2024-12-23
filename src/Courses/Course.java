@@ -19,6 +19,7 @@ public class Course {
     private String courseYear;
     private CourseType courseType;
     private School courseSchool;
+    private ArrayList<Lesson> lessons;
 
     public Course(){
     }

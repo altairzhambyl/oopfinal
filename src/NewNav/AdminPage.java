@@ -2,10 +2,10 @@ package NewNav;
 
 import Enums.Language;
 
-public class HomePage extends Page {
+public class AdminPage extends Page {
     private UserSession session;
 
-    public HomePage() {
+    public AdminPage() {
         this.session = UserSession.getInstance();
     }
 

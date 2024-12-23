@@ -1,5 +1,4 @@
 package NewNav;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -108,7 +107,17 @@ public class AuthPage extends Page {
         if (user != null) {
             session.setCurrentUser(user);
             if (user.logIn(password)) {
-            	new HomePage().start();            	
+            	if(user instanceof Teacher) {
+            		new TeacherPage().start();
+            	} else if (user instanceof Student) {
+            		new StudentPage().start();
+            	} else if (user instanceof Admin) {
+            		new AdminPage().start();
+            	} else if (user instanceof Manager) {
+            		new ManagerPage().start();
+            	} else {
+            		new HomePage().start();
+            	}          	
             } else {
             	navigate();
             }

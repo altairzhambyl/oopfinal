@@ -20,12 +20,11 @@ public class tester {
             }
             DB loadeddb = DB.getInstance();
 
-//			LogInfo log = new LogInfo(t, "Added new user to database");
-//			System.out.println(log);
-//			loadeddb.addLog(log);
-//            loadeddb.addUser(a);
-//            a.addUser(t);
-//            loadeddb.removeUser(t);
+            LogInfo log = new LogInfo(t, "Added new user to database");
+            System.out.println(log);
+            loadeddb.addLog(log);
+            loadeddb.addUser(a);
+            a.addUser(t);
             
             System.out.println(loadeddb);
     	} catch (Exception e) {

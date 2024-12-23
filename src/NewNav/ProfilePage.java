@@ -7,6 +7,7 @@ public class ProfilePage extends Page {
     public void display() {
         if (Page.language == Language.EN) {
             System.out.println("\n=== Profile Page ===");
+            System.out.println();
             System.out.println("1. Change password");
             System.out.println("-1. Go to Home");
             System.out.println("-2. Exit");

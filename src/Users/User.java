@@ -15,6 +15,7 @@ public static int userCount = 0;
 	private String userLastName;
 	private String email;
 	private String passwordHash;
+	private String phoneNumber;
 	private boolean isBlocked = false;
 	
 	private boolean isLoggedIn;
@@ -113,6 +114,13 @@ public static int userCount = 0;
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getPhoneNumber() {
+		return this.phoneNumber;	
+	}
+	
+	public void setPhoneNumber(String num) {
+		this.phoneNumber = num;
 	}
 	
 	public boolean equals(User b) {

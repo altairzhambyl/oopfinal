@@ -16,6 +16,8 @@ public class HomePage extends Page {
             System.out.println("Welcome, " + session.getCurrentUser().getFirstName() + "!");
             System.out.println("1. Go to Profile");
             System.out.println("2. Go to Settings");
+            System.out.println("3. Notifications");
+            System.out.println("4. Personal Information");
             System.out.println("-2. Logout");
             System.out.println("-3. Exit");
         } else if (Page.language == Language.RU) {
@@ -23,6 +25,8 @@ public class HomePage extends Page {
             System.out.println("Добро пожаловать, " + session.getCurrentUser().getFirstName() + "!");
             System.out.println("1. Профиль");
             System.out.println("2. Настройки");
+            System.out.println("3. Уведомления");
+            System.out.println("4. Личная Информация");
             System.out.println("-2. Выйти из аккаунта");
             System.out.println("-3. Выход");
         } else if (Page.language == Language.KZ) {
@@ -30,6 +34,8 @@ public class HomePage extends Page {
             System.out.println("Қош келдіңіз, " + session.getCurrentUser().getFirstName() + "!");
             System.out.println("1. Профильге өту");
             System.out.println("2. Баптауларға өту");
+            System.out.println("3. Хабарландырулар");
+            System.out.println("4. Жеке ақпарат");
             System.out.println("-2. Аккаунттан шығу");
             System.out.println("-3. Шығу");
         }
@@ -45,6 +51,12 @@ public class HomePage extends Page {
                 break;
             case 2: 
                 new SettingsPage().start();
+                break;
+            case 3: 
+                new NotificationPage().start();
+                break;
+            case 4: 
+                new PersonalInfoPage().start();
                 break;
             case -2:
                 session.logout();

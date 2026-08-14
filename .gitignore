@@ -1,1 +1,18 @@
+# Compiled output
 /bin/
+*.class
+
+# Eclipse / IDE
+.classpath
+.project
+.settings/
+.metadata/
+.idea/
+*.iml
+
+# Serialized runtime database (regenerated at runtime; never commit real data)
+/data
+
+# OS
+.DS_Store
+Thumbs.db

@@ -8,8 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import Database.DB;
 
 public abstract class User implements Serializable{
-	private static final long serialVersionUID = 1L;
-
 public static int userCount = 0;
 	
 	private final String userId;
@@ -17,6 +15,7 @@ public static int userCount = 0;
 	private String userLastName;
 	private String email;
 	private String passwordHash;
+	private String phoneNumber;
 	private boolean isBlocked = false;
 	
 	private boolean isLoggedIn;
@@ -39,16 +38,18 @@ public static int userCount = 0;
             throw new RuntimeException("Hashing algorithm not found", e);
         }
     }
-
+	
+	
+	
 	 
 	
 	public boolean logIn(String password) {
 		if (hashPassword(password).equals(this.passwordHash)) {
 			this.isLoggedIn = false;
-//			System.out.println("Login successful!");
+			System.out.println("Login successful!");
 			return true;
 		} else {
-//			System.out.println("Man you must've forgor your password *skull emoji*");
+			System.out.println("Man you must've forgor your password *skull emoji*");
 			return false;
 		}
 	}
@@ -100,10 +101,6 @@ public static int userCount = 0;
 	public String getLastName() {
 		return this.userLastName;	
 	}
-	
-	public String getUsername() {
-		return this.email;
-	}
 	 
 	
 	public void setLastName(String lastname) {
@@ -117,6 +114,13 @@ public static int userCount = 0;
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getPhoneNumber() {
+		return this.phoneNumber;	
+	}
+	
+	public void setPhoneNumber(String num) {
+		this.phoneNumber = num;
 	}
 	
 	public boolean equals(User b) {

@@ -4,7 +4,9 @@ package Database;
 import java.io.*;
 import java.util.Vector;
 
-import Courses.Course;
+import Courses.*;
+import Notifications.*;
+import Research.Research;
 import Users.User;
 
 // Define the Database class implementing Serializable
@@ -20,6 +22,8 @@ public class DB implements Serializable {
     private Vector<Course> courses = new Vector<>();
     private Vector<User> users = new Vector<>();
     private Vector<LogInfo> logs = new Vector<>();
+    private Vector<Message> messages = new Vector<>();
+    private Vector<Research> researches = new Vector<>();
 
     // Private constructor to prevent external instantiation
     private DB() {
@@ -61,7 +65,6 @@ public class DB implements Serializable {
         }
         return null;
     }
-    
 
     // Setter for users
     public void setUsers(Vector<User> users) {
@@ -79,7 +82,13 @@ public class DB implements Serializable {
         this.logs = logs;
         autoSave();
     }
-
+    
+    public Vector<Message> getMessages() {
+    	return messages;
+    }
+    public Vector<Research> getResearches() {
+    	return researches;
+    }
     // Add a course to the courses vector
     public void addCourse(Course course) {
         this.courses.add(course);
@@ -97,6 +106,15 @@ public class DB implements Serializable {
         this.logs.add(log);
         autoSave();
     }
+    
+    public void addMessage(Message message) {
+        this.messages.add(message);
+        autoSave();
+    }
+    public void addResearch(Research res) {
+        this.researches.add(res);
+        autoSave();
+    }
     public void removeCourse(Course course) {
         this.courses.remove(course);
         autoSave();
@@ -109,6 +127,15 @@ public class DB implements Serializable {
 
     public void removeLog(LogInfo log) {
         this.logs.remove(log);
+        autoSave();
+    }
+    
+    public void removeMessage(Message message) {
+        this.messages.remove(message);
+        autoSave();
+    }
+    public void removeResearch(Research res) {
+        this.researches.remove(res);
         autoSave();
     }
 

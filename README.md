@@ -28,6 +28,20 @@ exceptions, and object serialization for persistence — ~2,900 lines across 58 
 - **Localised at the domain level** — every screen renders in EN / RU / KZ from a single
   `Language` enum.
 
+## Features
+
+Role-gated capabilities, implemented end-to-end:
+
+- **Student** — register for / drop courses, view courses, transcript and marks, look up a
+  teacher, rate a teacher, conduct research, apply for an internship, view personal info.
+- **Teacher** — view and manage assigned courses, view enrolled students.
+- **Manager** — approve student registrations, add courses for registration (scoped to a
+  major / year of study), assign courses to teachers, manage news, and view student/teacher
+  info sorted by GPA or alphabetically.
+- **Admin** — manage users (add / remove / update) and read the immutable action log.
+- **Cross-cutting** — role-based authentication with SHA-256 password hashing, a page-based
+  navigation system, trilingual UI (EN / RU / KZ), and auto-persisted state.
+
 ## Architecture
 
 ```
@@ -103,6 +117,16 @@ working directory to persist users, courses and logs between sessions.
 > SHA-256 and persisted via Java serialization — fine for a coursework demo, not for
 > production. A production version would use a salted adaptive hash (bcrypt/Argon2) and a
 > real database. The repository intentionally ships **no** real user data.
+
+## Limitations
+
+Scoped as a coursework project — some planned features were left unfinished:
+
+- **Student Files** and **View Schedule** views were not implemented.
+- Inter-employee **messaging** is partial (model + storage exist; the full send/receive flow
+  is incomplete).
+- Security is coursework-grade (see the note above): unsalted SHA-256 + Java serialization,
+  not production-ready.
 
 ## Team
 

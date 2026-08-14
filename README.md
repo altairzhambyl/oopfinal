@@ -130,14 +130,19 @@ Scoped as a coursework project — some planned features were left unfinished:
 
 ## Team
 
-A two-person university project. Both authors' commits are preserved in the git history —
-see the contributor graph for the exact split.
+A four-person university project. Code and UML/design work were split across the team; the
+two code authors' commits are preserved in the git history (see the contributor graph).
 
+**Code**
 - **Altair Zhambyl** ([@altairzhambyl](https://github.com/altairzhambyl)) — authentication &
   login flow, user session, and parts of the user model and page-navigation layer.
-- **Zhanibek Sultanbek** ([@ZSultanbek](https://github.com/ZSultanbek)) — majority contributor:
-  database & persistence layer, course, research and notification modules, comparators, and
-  much of the page UI.
+- **Zhanibek Sultanbek** ([@ZSultanbek](https://github.com/ZSultanbek)) — majority code
+  contributor: database & persistence layer, course, research and notification modules,
+  comparators, and much of the page UI.
+
+**UML & design (use-case and class diagrams)**
+- **Almas Abitkhan**
+- **Malika Jumagaliyeva**
 
 ## License
 

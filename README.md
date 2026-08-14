@@ -111,7 +111,7 @@ see the contributor graph for the exact split.
 
 - **Altair Zhambyl** ([@altairzhambyl](https://github.com/altairzhambyl)) — authentication &
   login flow, user session, and parts of the user model and page-navigation layer.
-- **Zhanibek** ([@RedStarich](https://github.com/RedStarich)) — majority contributor:
+- **Zhanibek Sultanbek** ([@ZSultanbek](https://github.com/ZSultanbek)) — majority contributor:
   database & persistence layer, course, research and notification modules, comparators, and
   much of the page UI.
 
